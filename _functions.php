@@ -57,9 +57,10 @@ function generateGuestToken() {
 function fetchPlatformToken() {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://www.zee5.com/live-tv/aaj-tak/0-9-aajtak');
+    // curl_setopt($ch, CURLOPT_URL, 'https://www.zee5.com/global/live-tv/zee-bangla-hd/0-9-zeebangla'); global
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0'
+        'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0'
     ]);
     $response = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -77,7 +78,7 @@ function fetchM3U8url() {
     $ddToken = generateDDToken();
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://spapi.zee5.com/singlePlayback/getDetails/secure?channel_id=0-9-aajtak&device_id=' . $guestToken . '&platform_name=desktop_web&translation=en&user_language=en,hi&country=IN&state=&app_version=4.16.3&user_type=guest&check_parental_control=false');
+    curl_setopt($ch, CURLOPT_URL, 'https://spapi.zee5.com/singlePlayback/getDetails/secure?channel_id=0-9-aajtak&device_id=' . $guestToken . '&platform_name=desktop_web&translation=en&user_language=en,hi&country=IN&state=&app_version=4.24.0&user_type=guest&check_parental_control=false');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -85,7 +86,7 @@ function fetchM3U8url() {
         'content-type: application/json',
         'origin: https://www.zee5.com',
         'referer: https://www.zee5.com/',
-        'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0'
+        'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0'
     ]);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
         'x-access-token' => $platformToken,
@@ -133,4 +134,5 @@ function generateCookieZee5($userAgent) {
         exit("An error occurred: " . $e->getMessage());
     }
 }
+
 //@yuvraj824
