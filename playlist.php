@@ -10,6 +10,7 @@ $host = $_SERVER['HTTP_HOST'];
 $requestUri = $_SERVER['REQUEST_URI'];
 $scriptUrl = $protocol . $host . str_replace('playlist.php','index.php', $requestUri);
 $data = json_decode($jsonData, true);
+header('Content-Type: text/plain');
 echo "#EXTM3U\n\n";
 echo "# Zee5 Playlist Combined (IN + GB + SG + AE)\n";
 echo "# STRICT WARNING: This is a private server.\n";
@@ -37,4 +38,5 @@ foreach ($data['data'] as $channel) {
 }
 exit;
 //@yuvraj824
+
 
