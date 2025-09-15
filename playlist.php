@@ -26,11 +26,10 @@ foreach ($data['data'] as $channel) {
     $chno      = $channel['chno'] ?? '';
     $language  = $channel['language'] ?? '';
     $name      = $channel['name'] ?? '';
-    $chanName  = $channel['channel_name'] ?? '';
     $logo      = $channel['logo'] ?? '';
     $genre     = $channel['genre'] ?? '';
     $streamUrl = $scriptUrl . '?id=' . ($id ?: '');
-    echo "#EXTINF:-1 tvg-id=\"$id\" tvg-country=\"$country\" tvg-chno=\"$chno\" tvg-language=\"$language\" tvg-name=\"$name\" tvg-logo=\"$logo\" group-title=\"$genre\", $chanName\n";
+    echo "#EXTINF:-1 tvg-id=\"$id\" tvg-country=\"$country\" tvg-chno=\"$chno\" tvg-language=\"$language\" tvg-name=\"$slug\" tvg-logo=\"$logo\" group-title=\"$genre\", $name\n";
     echo "#KODIPROP:inputstream=inputstream.adaptive\n";
     echo "#KODIPROP:inputstream.adaptive.manifest_type=HLS\n";
     echo "#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3\n";
@@ -38,5 +37,6 @@ foreach ($data['data'] as $channel) {
 }
 exit;
 //@yuvraj824
+
 
 
